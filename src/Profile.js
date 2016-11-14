@@ -1,13 +1,13 @@
-import React from 'react';
+import React  from 'react';
 import './Profile.css';
 import Anonymous from './img/anonymous.png';
 
 function Profile(isAnonymous){
-  if(isAnonymous){ //익명일 경우
+  if(isAnonymous){
     return(
         <div className="anonymous">
           <div className="today_title">
-            무엇을 공유할까요?
+            <i className="fa fa-pencil"></i> 무엇을 공유할까요?
           </div>
           <div className="anonymous_name">
           굿닥이
@@ -17,7 +17,7 @@ function Profile(isAnonymous){
           </div>
         </div>
     )
-  }else{//익명이 아닐 경우는 일단은 빈 div
+  }else{
     return <div/>;
   }
 }

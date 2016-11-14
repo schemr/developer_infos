@@ -53,7 +53,7 @@ class Editor extends Component {
     article.user = "Genji";
     article.content = this.state.content;
     article.urls[0].url = this.state.embedlyUrl;
-    this.props.submit(article);
+    this.props.handleSubmit(article);
   }
   detectURL(text){
     var urls = text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g);
@@ -75,7 +75,7 @@ class Editor extends Component {
         <div className="actionBar">
           <button className="upload"
             disabled={!this.hasValue(this.state.content)}
-            onClick={this.handleSubmit}><span>스탠드업!</span></button>
+            onClick={this.handleSubmit}><span>글올리기!</span></button>
         </div>
       </div>
     );
