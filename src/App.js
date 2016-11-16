@@ -4,6 +4,7 @@ import './App.css';
 import Editor from './Editor'
 import FirebaseDao from './FirebaseDao'
 import config from './config'
+import CardList from './CardList'
 
 /*
 * App Component
@@ -36,16 +37,18 @@ class App extends Component {
     return lis;
   }
   componentWillMount() {
-    this.dao.list(25).on('value',(dataSnapshots)=>{
+    this.dao.list(25,(articles)=>{
       var items = [];
-      dataSnapshots.forEach(function(dataSnapshot){
-        var item = dataSnapshot.val();
-        item['key'] = dataSnapshot.key;
-        console.log(dataSnapshot.val());
+      //목록을 루프를 태워서
+      articles.forEach(function(article){
+        var item = article.val();
+        item['key'] = article.key;
         items.push(item);
       })
+      //state 값에 입력
       if(items && items.length>0){
         this.setState({
+          //최신 데이타가 위에 올라와야 하므로 데이타의 역순으로 확인
           articles: items.reverse()
         });
       }
@@ -60,10 +63,8 @@ class App extends Component {
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </div>
-        <Editor handleSubmit={this.submit} isAnonymous={this.isAnonymous}/>
-        <ul>
-        {this.getArticles()}
-        </ul>
+        <Editor submit={this.submit} isAnonymous={this.isAnonymous}/>
+        <CardList articles={this.state.articles}/>
       </div>
     );
   }

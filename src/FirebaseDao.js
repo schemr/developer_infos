@@ -17,8 +17,11 @@ export default class FirebaseDao {
     return firebase.database().ref().update(updates);
   }
   remove(key){
-    firebase.database().ref('/posts/').child(key).remove();
-    return firebase.database().ref('/user-posts/genji/').child(key).remove();
+    return new Promise(resolve=>{
+      firebase.database().ref('/posts/').child(key).remove();
+      firebase.database().ref('/user-posts/genji/').child(key).remove();
+      resolve(key);
+    });
   }
   off(){
     return firebase.database().ref().off();
@@ -26,11 +29,25 @@ export default class FirebaseDao {
   newKey(){
     return firebase.database().ref().child('posts').push().key;
   }
-  list(pagesize){
-    return firebase.database().ref('/posts/')
-            .orderByKey().limitToLast(pagesize);
+  /**
+  * Promise를 호출하게 되면 이벤트가 등록된 부분이 사라기제 된다.
+  */
+  list(pagesize,callback){
+    // return new Promise(resolve=>{
+      firebase.database().ref('posts')
+              .orderByKey().limitToLast(pagesize)
+              .on('value',(articles)=>{
+                callback(articles);
+              })
+    // });
   }
   getArticle(key){
-    return firebase.database().ref( + key);
+    return new Promise(resolve=>{
+      firebase.database().ref('/posts/'+key)
+              .on('value',(articles)=>{
+                resolve(articles);
+              })
+    });
   }
+
 }
