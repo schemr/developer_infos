@@ -72,7 +72,7 @@ class Editor extends Component {
   }
   getArticle(){
     let article = {};
-    article.user = "Genji";
+    article.user = "Chris";
     article.content = this.state.content;
     if(this.state.embedlyUrl){
       article.cardInfo = this.state.cardInfo;
@@ -115,7 +115,7 @@ class Editor extends Component {
         <div className="actionBar">
           <button className="upload"
             disabled={!this.hasValue(this.state.content)}
-            onClick={this.handleSubmit}><span>스탠드업!</span></button>
+            onClick={this.handleSubmit}><span>글쓰기!</span></button>
         </div>
       </div>
     );
