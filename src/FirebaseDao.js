@@ -2,7 +2,6 @@
 /*
 *  initializeFirebaseApp
 */
-
 export default class FirebaseDao {
   constructor(config){
     firebase.initializeApp(config);
