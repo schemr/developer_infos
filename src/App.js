@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import logo from './img/logo.png';
 import './App.css';
 import Editor from './Editor'
-import FirebaseDao from './FirebaseDao'
+import { connect } from 'react-redux'
+import { link } from 'react-router'
 import config from './config'
 import CardList from './CardList'
 

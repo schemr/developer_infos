@@ -1,24 +1,48 @@
 import React  from 'react';
 import './Profile.css';
-import Anonymous from './img/anonymous.png';
+import { Link } from 'react-router'
+import PopCard from './PopCard'
 
-function Profile(isAnonymous){
-  if(isAnonymous){
-    return(
-        <div className="anonymous">
-          <div className="today_title">
-            <i className="fa fa-pencil"></i> 무엇을 공유할까요?
+class Profile extends Component{
+  constructor(props){
+    super(props);
+    this.state={
+      user : undefined,
+      isPop: false
+    }
+  }
+  componentWillMount(){
+    firebase.auth().onAuthStateChanged((user)=>{
+      if(user){
+        this.setState({user:user});
+      }else{
+        this.setState({user:undefined});
+      }
+    });
+  }
+
+  popProfile(){
+    this.setState({isPop:!this.state.isPop})
+  }
+
+  render(){
+    let user = this.state.user;
+    if(user){
+      return(
+        <span>
+          <div className="profile_name">
+            <a href="#" onClick={()=>this.popProfile()}>{user.displayName}</a>
           </div>
-          <div className="anonymous_name">
-          굿닥이
+          <div className="profile_img_wrap">
+            <img src={user.photoURL} alt="profiles" className="profile_img" />
           </div>
-          <div className="anonymous_img_wrap">
-            <img src={Anonymous} alt="profiles" className="anonymous_img"/>
-          </div>
-        </div>
-    )
-  }else{
-    return <div/>;
+          <PopCard isPop={this.state.isPop}/>
+        </span>
+      )
+    }else{
+      return(<div className="profile_name"><Link to="/login">로그인</Link></div>)
+    }
   }
 }
+
 export default Profile;
