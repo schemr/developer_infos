@@ -2,10 +2,19 @@
 /*
 *  initializeFirebaseApp
 */
+
 export default class FirebaseDao {
   constructor(config){
-    firebase.initializeApp(config);
+    if(firebase.apps&&firebase.apps.length>0){
+      this.firebaseApp = firebase.apps[0];
+    }else{
+      this.firebaseApp = firebase.initializeApp(config);
+    }
   }
+  getFirebaseApp(){
+    return this.firebaseApp;
+  }
+
   insert(postData){
     return firebase.database().ref().child('posts').push(postData);
   }
@@ -48,5 +57,11 @@ export default class FirebaseDao {
               })
     });
   }
+  getUI(){
+    return new firebaseui.auth.AuthUI(firebase.auth());
+  }
 
+  logout(){
+    return firebase.auth().signOut();
+  }
 }

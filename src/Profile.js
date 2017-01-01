@@ -1,4 +1,5 @@
-import React  from 'react';
+/*global firebase*/
+import React, {Component}  from 'react';
 import './Profile.css';
 import { Link } from 'react-router'
 import PopCard from './PopCard'

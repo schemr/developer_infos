@@ -13,7 +13,7 @@ class Login extends Component {
     var uiConfig = {
       'signInSuccessUrl' : window.location.origin,
       'signInOptions' : [
-        firebase.auth.FGoogleAuthProvider.PROVIDER_ID
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID
       ]
     };
     this.ui.start('#firebaseui-auth', uiConfig);
