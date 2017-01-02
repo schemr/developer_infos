@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import logo from './img/logo.png';
-import './App.css';
-import Editor from './Editor'
+import logo from '../img/logo.png';
+import '../styles/App.css';
+import Editor from '../components/Editor'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import {updateArticle} from './actions/Article'
+import {updateArticle} from '../actions/Article'
 
 /*
 * App Component

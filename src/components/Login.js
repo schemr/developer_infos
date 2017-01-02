@@ -1,7 +1,7 @@
 /*global firebaseui,firebase*/
 import React, {Component} from 'react'
-import FirebaseDao from './FirebaseDao'
-import config from './config'
+import FirebaseDao from '../FirebaseDao'
+import config from '../config'
 import { connect } from 'react-redux'
 //
 class Login extends Component {

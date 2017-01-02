@@ -1,7 +1,7 @@
 /*global firebase*/
 import React, {Component} from 'react';
-import './PopCard.css';
-import {userArticles, loadArticles} from './actions/Article';
+import '../styles/PopCard.css';
+import {userArticles, loadArticles} from '../actions/Article';
 import {connect} from 'react-redux'
 
 class PopCard extends Component {

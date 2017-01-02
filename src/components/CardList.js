@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Card from './Card'
-import './CardList.css'
+import Card from '../containers/Card'
+import '../styles/CardList.css'
 import {connect} from 'react-redux'
-import {loadArticles} from './actions/Article'
+import {loadArticles} from '../actions/Article'
 
 class CardList extends Component {
   componentWillMount() {

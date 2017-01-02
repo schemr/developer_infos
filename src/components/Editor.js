@@ -1,9 +1,9 @@
 /*global firebaseui,firebase*/
 import React, { Component } from 'react'
-import './Editor.css'
+import '../styles/Editor.css'
 import Profile from './Profile'
-import Card from './Card'
-import getEmbedly from './EmbedlyDao'
+import Card from '../containers/Card'
+import getEmbedly from '../EmbedlyDao'
 
 class Editor extends Component {
   constructor(props){

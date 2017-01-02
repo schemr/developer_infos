@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute } from 'react-router'
-import App from './App';
-import './index.css';
-import Login from './Login'
-import NotFound from './NotFound'
-import CardList from './CardList'
+import App from './containers/App';
+import './styles/index.css';
+import Login from './components/Login'
+import NotFound from './components/NotFound'
+import CardList from './components/CardList'
 import { store, history } from './store/global'
 
 
